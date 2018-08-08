@@ -1,13 +1,13 @@
-# Realtek RTL8188CUS Monitor Mode Instructions
+# Realtek RTL8188CUS Monitor Mode for Raspbian Instructions
 
 This will allow you to use your Realtek RTL8188CUS (common wireless chip
-found in Edimax EDW-7811Un) in monitor mode _without_ recompiling the kernel.
+found in Edimax EDW-7811Un) in monitor mode _without_ recompiling the kernel in Raspbian.
 
 
 ### Install
 
 1. Check the directory with the RTL8192CU drivers in them by typing `sudo ls /lib/modules/$(uname -r)/kernel/drivers/net/wireless/realtek.`
-  * If it returns with an error or cannot find the driver (and it shouldn't), you will need to install the drivers that I have put on GitHub. Please see my profile for the repository.
+  * If it returns with an error or cannot find the driver (and it shouldn't), you will need to install the drivers that I have put on GitHub and follow the guide at this link. https://github.com/TheN00bBuilder/rtl8192drivers
 
 
 2. Type `sudo modprobe rtl8192cu` to turn on the correct drivers, in case it is using the wrong ones.
