@@ -1,0 +1,39 @@
+# Realtek RTL8192CU Monitor Mode Instructions
+
+This will allow you to use your Realtek RTL8192CU (common wireless chip
+found in Edimax EDW-7811Un) in monitor mode without recompiling kernel.
+
+
+### Prerequisites
+
+A few prerequisites are required in order to run the modified drivers. 
+To get the files for the drivers, make sure you have Github installed on your machine with...
+`sudo apt-get install github`
+
+and wait for it to install. Once installed, the command to gather the drivers from Github is...
+`git clone https://github.com/lwfinger/rtlwifi_new` while in the directory you want your files installed to.
+
+Do _NOT_ install the Makefile; it will throw an error on the Raspberry Pi, due to it being an ARM CPU/SoC.
+That is the big reason you need to recompile a kernel to get the drivers that are included with an OS like Kali Linux
+that natively support the monitor mode on these chips. With this method however, we can trick Linux into thinking that it has the
+correct drivers.
+
+
+
+###Install/Blacklisting.
+
+1. In a blank terminal, type `uname -a' and note the kernel version.
+..*Make sure to write it down, you will need it in the next step.
+
+2. Navigate using `cd` to `/lib/modules/_Kernel Version_/kernel/drivers/net/wireless/realtek.`
+..*Copy that path that you made, you will need it later.
+..*Make sure that you see a directory with the name "rtl8192.cu."
+
+3. Now just type plain `cd` to send you back to the home folder. Now, `cd` into `/etc/modprobe.d` and sudo open in your editor of choice
+the `blacklist.conf` file.
+..*If none exists, just make one.
+
+4. Type `blacklist rtl8192.conf` to block the RTL8192 driver from being used. 
+
+
+
